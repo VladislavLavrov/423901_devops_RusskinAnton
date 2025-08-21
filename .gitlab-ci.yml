@@ -1,11 +1,43 @@
+image: node:18-alpine
+
+stages:
+  - install
+  - build
+  - deploy
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+
+install_dependencies:
+  stage: install
+  script:
+    - npm ci --prefer-offline
+  artifacts:
+    paths:
+      - node_modules/
+
+build_project:
+  stage: build
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+  only:
+    - main
+    - master
+    - develop
+
 pages:
-      stage: deploy
-      script:
-        - npm install # or yarn install
-        - npm run build # or yarn build
-        - mv dist public # Move build output to 'public' for GitLab Pages
-      artifacts:
-        paths:
-          - public
-      only:
-        - web # Or your desired branch for deployment
+  stage: deploy
+  script:
+    - npm run build
+    - cp -r dist/* public/
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
+    - master
