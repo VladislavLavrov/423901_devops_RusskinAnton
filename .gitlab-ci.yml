@@ -9,14 +9,9 @@ cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
     - node_modules/
-    - .npm/
 
 variables:
   NODE_VERSION: "22"
-
-before_script:
-  - node --version
-  - npm --version
 
 install_dependencies:
   stage: install
@@ -41,6 +36,7 @@ pages:
   dependencies:
     - build_project
   script:
+    - mkdir -p public
     - cp -r dist/* public/
   artifacts:
     paths:
