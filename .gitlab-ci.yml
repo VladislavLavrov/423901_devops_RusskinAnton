@@ -1,19 +1,42 @@
-image: node:lts
-pages:
-  stage: deploy
-  cache:
-    key:
-      files:
-        - package-lock.json
-      prefix: npm
+image: node:18
+
+stages:
+  - install
+  - build
+  - deploy
+
+cache:
+  paths:
+    - node_modules/
+
+install_dependencies:
+  stage: install
+  script:
+    - npm ci
+  artifacts:
     paths:
       - node_modules/
+
+build_project:
+  stage: build
   script:
-    - npm install
     - npm run build
-    - cp -a dist/. public/
+  artifacts:
+    paths:
+      - dist/
+  only:
+    - main
+    - master
+    - develop
+
+pages:
+  stage: deploy
+  script:
+    - npm run build
+    - cp -r dist/* public/
   artifacts:
     paths:
       - public
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  only:
+    - main
+    - master
