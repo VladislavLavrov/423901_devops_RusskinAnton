@@ -41,3 +41,4 @@ pages:
   only:
     - main
     - master
+    - web
