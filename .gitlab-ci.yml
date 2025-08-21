@@ -1,4 +1,4 @@
-image: node:18-alpine
+image: node:22-alpine
 
 stages:
   - install
@@ -10,6 +10,13 @@ cache:
   paths:
     - node_modules/
     - .npm/
+
+variables:
+  NODE_VERSION: "22"
+
+before_script:
+  - node --version
+  - npm --version
 
 install_dependencies:
   stage: install
