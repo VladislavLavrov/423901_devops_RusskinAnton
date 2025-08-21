@@ -9,11 +9,12 @@ cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
     - node_modules/
+    - .npm/
 
 install_dependencies:
   stage: install
   script:
-    - npm ci --prefer-offline
+    - npm ci
   artifacts:
     paths:
       - node_modules/
@@ -26,19 +27,16 @@ build_project:
     paths:
       - dist/
   only:
-    - main
-    - master
-    - develop
+    - web
 
 pages:
   stage: deploy
+  dependencies:
+    - build_project
   script:
-    - npm run build
     - cp -r dist/* public/
   artifacts:
     paths:
       - public
   only:
-    - main
-    - master
     - web
