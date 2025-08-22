@@ -1,7 +1,7 @@
 {
   "name": "bars-web-app",
   "homepage": "https://practika2025.gitlab.io/bars-accounting-telegram/",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -11,25 +11,36 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mui/icons-material": "5.17.1",
+    "@mui/material": "5.17.1",
+    "axios": "^1.11.0",
+    "dockview": "2.1.4",
+    "dockview-core": "2.1.4",
     "bars-frontend-auth-libs": "D:\\bars-frontend\\auth",
     "bars-frontend-core": "D:\\bars-frontend\\core",
     "bars-frontend-shared": "D:\\bars-frontend\\bars-frontend-shared",
     "bars-frontend-versioning": "D:\\bars-frontend\\Bars.Frontend.Versioning",
+    "dayjs": "^1.11.13",
     "gh-pages": "^6.3.0",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "prop-types": "^15.8.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.15.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.33.0",
-    "@types/react": "^19.1.10",
-    "@types/react-dom": "^19.1.7",
-    "@vitejs/plugin-react-swc": "^4.0.0",
-    "eslint": "^9.33.0",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.20",
-    "globals": "^16.3.0",
-    "typescript": "~5.8.3",
-    "typescript-eslint": "^8.39.1",
-    "vite": "^7.1.2"
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.13.1",
+    "@typescript-eslint/parser": "^7.13.1",
+    "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.7",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.1",
+    "vite-plugin-static-copy": "^3.1.0"
+  },
+  "engines": {
+    "node": ">=18.18.0"
   }
 }
