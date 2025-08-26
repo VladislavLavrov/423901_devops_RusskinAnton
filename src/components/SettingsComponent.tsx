@@ -19,15 +19,15 @@ interface ButtonConfig {
 }
 
 interface UIConfig {
-  layout: Layout;           // выравнивание кнопок
-  order: Order;             // порядок отображения
+  layout: Layout;          
+  order: Order;             
   buttons: {
     save: ButtonConfig;
     reset: ButtonConfig;
   };
 }
 
-// --- дефолтная конфигурация ---
+
 const defaultConfig: UIConfig = {
   layout: 'left',
   order: 'save-reset',
@@ -37,10 +37,9 @@ const defaultConfig: UIConfig = {
   },
 };
 
-// --- миграция со старого формата (если уже что-то лежит в localStorage) ---
 const migrateLegacy = (raw: any): UIConfig | null => {
   if (!raw || typeof raw !== 'object') return null;
-  if ('buttons' in raw) return raw as UIConfig; // уже новый формат
+  if ('buttons' in raw) return raw as UIConfig; 
   if ('showSaveButton' in raw || 'showResetButton' in raw) {
     return {
       layout: 'left',
@@ -69,7 +68,7 @@ const SettingsConstructor: React.FC = () => {
   const [originalConfig, setOriginalConfig] = useState<UIConfig>(defaultConfig);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
 
-  // загрузка сохранённого конфига и миграция при первом рендере
+
 useEffect(() => {
   const saved = localStorage.getItem('uiConfig');
   if (saved) {
@@ -77,7 +76,7 @@ useEffect(() => {
       const parsed = JSON.parse(saved);
       const migrated = migrateLegacy(parsed) ?? parsed ?? defaultConfig;
       setConfig(migrated);
-      setOriginalConfig(migrated); // синхронизируем с конфигом
+      setOriginalConfig(migrated); 
     } catch {
       setConfig(defaultConfig);
       setOriginalConfig(defaultConfig);
@@ -89,13 +88,13 @@ useEffect(() => {
 }, []);
 
 
-  // есть ли несохранённые изменения
+
   const hasUnsavedChanges = useMemo(
     () => JSON.stringify(config) !== JSON.stringify(originalConfig),
     [config, originalConfig]
   );
 
-  // хелперы обновления полей
+
   const updateButton = (key: keyof UIConfig['buttons'], patch: Partial<ButtonConfig>) => {
     setConfig(prev => ({
       ...prev,
@@ -109,10 +108,10 @@ useEffect(() => {
   const updateLayout = (value: Layout) => setConfig(prev => ({ ...prev, layout: value }));
   const updateOrder  = (value: Order)  => setConfig(prev => ({ ...prev, order: value }));
 
-  // сохранить/сбросить
+
 const handleSave = () => {
   localStorage.setItem('uiConfig', JSON.stringify(config));
-  setOriginalConfig(config); // обязательно обновляем "оригинал"
+  setOriginalConfig(config); 
   setSnackbarOpen(false);
   setTimeout(() => setSnackbarOpen(true), 50);
 };
@@ -120,14 +119,14 @@ const handleSave = () => {
     setConfig(defaultConfig);
   };
 
-  // отображение/порядок кнопок
+ 
   const justifyContent =
     config.layout === 'left' ? 'flex-start' : config.layout === 'center' ? 'center' : 'flex-end';
 
   const orderedKeys: Array<'save' | 'reset'> =
     config.order === 'save-reset' ? ['save', 'reset'] : ['reset', 'save'];
 
-  // обработчики кликов по самим кнопкам
+
   const onClickSave = () => handleSave();
   const onClickReset = () => handleResetToDefaults();
 
@@ -135,7 +134,7 @@ const handleSave = () => {
     <div style={{ padding: 20, maxWidth: 820, margin: '0 auto', display: 'grid', gap: 24 }}>
       <h2>🎛️ Конструктор кнопок</h2>
 
-      {/* Панель управления (редактор конфигурации кнопок) */}
+      {/* Панель управления */}
       <div
         style={{
           display: 'grid',
@@ -212,7 +211,7 @@ const handleSave = () => {
           <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
 <BarsSelect
   label="Выравнивание"
-  value={[config.layout]} // просто строка
+  value={[config.layout]}
   onChange={(e) => {
     const newValue = e.target.value as Layout;
     updateLayout(newValue);
@@ -252,7 +251,7 @@ const handleSave = () => {
         </div>
       </div>
 
-      {/* Превью итоговых кнопок (как они будут выглядеть в вашем UI) */}
+      {/* Превью итоговых кнопок */}
       <div style={{ padding: 16, border: '1px dashed #cfcfcf', borderRadius: 12 }}>
         <div style={{ marginBottom: 8, opacity: 0.8 }}>Превью:</div>
         <div style={{ display: 'flex', gap: 10, justifyContent }}>
