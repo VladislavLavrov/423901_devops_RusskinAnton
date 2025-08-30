@@ -1,6 +1,7 @@
 image: node:22
 
 stages:
+  - before_script
   - install
   - build
   - deploy
