@@ -1,7 +1,6 @@
 image: node:22
 
 stages:
-  - before_script
   - install
   - build
   - deploy
@@ -11,11 +10,10 @@ cache: {}
 variables:
   NODE_VERSION: "22"
 
-before_script:
-  - rm -rf package-lock.json node_modules
-
 install_dependencies:
   stage: install
+  before_script:
+    - rm -rf package-lock.json node_modules
   script:
     - npm i --legacy-peer-deps
   artifacts:
@@ -26,7 +24,8 @@ install_dependencies:
 build_project:
   stage: build
   script:
-    - npm run build
+    - npx tsc -b
+    - npx vite build
   artifacts:
     paths:
       - dist/
