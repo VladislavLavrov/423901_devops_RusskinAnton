@@ -13,24 +13,19 @@ variables:
 install_dependencies:
   stage: install
   script:
-    - ls -la local_modules/ || echo "local_modules not found"
-    - ls -la local_modules/bars-frontend-auth-libs || echo "bars-frontend-auth-libs not found"
-    - ls -la local_modules/bars-frontend-core || echo "bars-frontend-core not found"
-    - ls -la local_modules/bars-frontend-shared || echo "bars-frontend-shared not found"
-    - ls -la local_modules/bars-frontend-versioning || echo "bars-frontend-versioning not found"
-    - npm install --legacy-peer-deps
-    - ls -la node_modules/bars-frontend-auth-libs || echo "bars-frontend-auth-libs not installed"
-    - ls -la node_modules/bars-frontend-core || echo "bars-frontend-core not installed"
-    - ls -la node_modules/bars-frontend-shared || echo "bars-frontend-shared not installed"
-    - ls -la node_modules/bars-frontend-versioning || echo "bars-frontend-versioning not installed"
+    - npm ci --legacy-peer-depsinstalled"
   artifacts:
     paths:
       - node_modules/
 
-
 build_project:
   stage: build
   script:
+    - cd local_modules/bars-frontend-auth-libs && npm run build || echo "No build script"
+    - cd ../bars-frontend-core && npm run build || echo "No build script"
+    - cd ../bars-frontend-shared && npm run build || echo "No build script"
+    - cd ../bars-frontend-versioning && npm run build || echo "No build script"
+    - cd ../..
     - npm run build
   artifacts:
     paths:
