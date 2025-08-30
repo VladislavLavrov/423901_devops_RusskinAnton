@@ -17,7 +17,6 @@ install_dependencies:
   stage: install
   script:
     - npm i --legacy-peer-deps
-    - npm ci
   artifacts:
     paths:
       - node_modules/
