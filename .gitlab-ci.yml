@@ -5,7 +5,10 @@ stages:
   - build
   - deploy
 
-cache: {}
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
 
 variables:
   NODE_VERSION: "22"
@@ -14,18 +17,15 @@ install_dependencies:
   stage: install
   script:
     - npm i --legacy-peer-deps
+    - npm ci
   artifacts:
     paths:
       - node_modules/
+      - local_modules/
 
 build_project:
   stage: build
   script:
-    - cd local_modules/bars-frontend-auth-libs && npm run build || echo "No build script"
-    - cd ../bars-frontend-core && npm run build || echo "No build script"
-    - cd ../bars-frontend-shared && npm run build || echo "No build script"
-    - cd ../bars-frontend-versioning && npm run build || echo "No build script"
-    - cd ../..
     - npm run build
   artifacts:
     paths:

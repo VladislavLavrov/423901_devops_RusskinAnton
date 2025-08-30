@@ -1,0 +1,1 @@
+export type PageType = 'MainPage' | 'OrderReports' | 'EditCenters' | 'Account' | 'DefaultPage' | 'SecurityUsers' | 'SecurityGroups' | 'SecurityUserPermissions' | 'SecurityAudit' | 'AuthPage' | 'SecurityAccountInfo' | 'Documents' | 'Operations' | 'CreateDocument' | 'Organizations' | 'CreateOrganizations';
