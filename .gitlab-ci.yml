@@ -20,6 +20,7 @@ install_dependencies:
   artifacts:
     paths:
       - node_modules/
+      - local_modules/
 
 build_project:
   stage: build
@@ -29,7 +30,7 @@ build_project:
     paths:
       - dist/
   only:
-    - main
+    - web
 
 pages:
   stage: deploy
@@ -42,4 +43,4 @@ pages:
     paths:
       - public
   only:
-    - main
+    - web
