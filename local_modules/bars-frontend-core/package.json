@@ -65,9 +65,9 @@
   "types": "dist/esm/types/index.d.ts",
   "homepage": "./",
   "dependencies": {
-    "bars-frontend-auth-libs": "./local_modules/bars-frontend-auth-libs",
-    "bars-frontend-shared": "./local_modules/bars-frontend-shared",
-    "bars-frontend-versioning": "./local_modules/bars-frontend-versioning",
+    "bars-frontend-auth-libs": "../bars-frontend-auth-libs",
+    "bars-frontend-shared": "../bars-frontend-shared",
+    "bars-frontend-versioning": "../bars-frontend-versioning",
     "dockview": "2.1.4",
     "dockview-core": "2.1.4",
     "material-react-table": "3.2.1",
