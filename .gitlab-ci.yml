@@ -13,6 +13,7 @@ variables:
 install_dependencies:
   stage: install
   script:
+    - npm cache clean --force
     - npm i --legacy-peer-deps
   artifacts:
     paths:
