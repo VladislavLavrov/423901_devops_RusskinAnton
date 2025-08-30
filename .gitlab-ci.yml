@@ -16,7 +16,7 @@ variables:
 install_dependencies:
   stage: install
   script:
-    - nmp install
+    - npm install
     - npm ci
   artifacts:
     paths:
