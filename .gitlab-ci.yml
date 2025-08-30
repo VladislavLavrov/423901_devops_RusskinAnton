@@ -29,7 +29,7 @@ build_project:
     paths:
       - dist/
   only:
-    - web
+    - main
 
 pages:
   stage: deploy
@@ -42,4 +42,4 @@ pages:
     paths:
       - public
   only:
-    - web
+    - main
