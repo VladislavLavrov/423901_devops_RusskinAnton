@@ -26,7 +26,7 @@ install_dependencies:
 build_project:
   stage: build
   script:
-    - npm run build
+    - npm i --legacy-peer-deps
   artifacts:
     paths:
       - dist/
