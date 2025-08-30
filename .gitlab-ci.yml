@@ -13,7 +13,7 @@ variables:
 install_dependencies:
   stage: install
   script:
-    - npm ci --legacy-peer-depsinstalled"
+    - npm i --legacy-peer-deps
   artifacts:
     paths:
       - node_modules/
