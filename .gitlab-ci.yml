@@ -1,17 +1,17 @@
-image: node:22-alpine
+image: node:22
 
 stages:
   - install
   - build
   - deploy
 
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - node_modules/
+cache: {}
 
 variables:
   NODE_VERSION: "22"
+
+before_script:
+  - rm -rf package-lock.json node_modules
 
 install_dependencies:
   stage: install
