@@ -5,10 +5,7 @@ stages:
   - build
   - deploy
 
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - node_modules/
+cache: {}
 
 variables:
   NODE_VERSION: "22"
