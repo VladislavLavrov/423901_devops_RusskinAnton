@@ -1,21 +1,21 @@
 version: '3.7'
 services:
   mariadb:
-    container_name: 12-mariadb
-    hostname: mariadb
-    image: mariadb:10.5
-    restart: always
-    environment:
+     container_name: web-mariadb-12
+     hostname: mariadb
+     image: mariadb:10.5
+     restart: always
+     environment:
       MARIADB_ROOT_PASSWORD: password
-      MARIADB_DATABASE: webdb
-      MARIADB_USER: webdb
+      MARIADB_DATABASE: 12_CalculatorDb
+      MARIADB_USER: root
       MARIADB_PASSWORD: password
-    ports:
-      - "0.0.0.0:5033:3306"
+     ports:
+      - "0.0.0.0:5052:3306"
 
   web:
-    container_name: 12-calculator
+    container_name: 12_Calculator
     hostname: app
-    build: Calculator/
+    build: .
     ports:
       - "0.0.0.0:5012:5012"
