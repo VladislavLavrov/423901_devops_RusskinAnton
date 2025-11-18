@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "9gFjTuqX5b0=",
+  "dgSpecHash": "jc2SK+rlRt4=",
   "success": true,
   "projectFilePath": "C:\\Users\\Anton Russkin\\папочка\\423901_devops_RusskinAnton\\App_practical\\12_Calculator\\12_Calculator.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Anton Russkin\\.nuget\\packages\\confluent.kafka\\2.8.0\\confluent.kafka.2.8.0.nupkg.sha512",
     "C:\\Users\\Anton Russkin\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\Anton Russkin\\.nuget\\packages\\librdkafka.redist\\2.8.0\\librdkafka.redist.2.8.0.nupkg.sha512",
     "C:\\Users\\Anton Russkin\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "C:\\Users\\Anton Russkin\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.3\\microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",
     "C:\\Users\\Anton Russkin\\.nuget\\packages\\microsoft.codeanalysis.common\\4.5.0\\microsoft.codeanalysis.common.4.5.0.nupkg.sha512",
