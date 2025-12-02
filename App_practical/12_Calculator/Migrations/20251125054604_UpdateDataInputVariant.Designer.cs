@@ -3,6 +3,7 @@ using Calculator.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace _12_Calculator.Migrations
 {
     [DbContext(typeof(CalculatorContext))]
-    partial class CalculatorContextModelSnapshot : ModelSnapshot
+    [Migration("20251125054604_UpdateDataInputVariant")]
+    partial class UpdateDataInputVariant
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,9 +41,8 @@ namespace _12_Calculator.Migrations
                     b.Property<string>("Result")
                         .HasColumnType("varchar(128)");
 
-                    b.Property<string>("Type_operation")
-                        .IsRequired()
-                        .HasColumnType("varchar(128)");
+                    b.Property<int>("Type_operation")
+                        .HasColumnType("int");
 
                     b.HasKey("ID_DataInputVariant");
 
