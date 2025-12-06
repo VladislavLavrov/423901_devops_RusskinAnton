@@ -1,6 +1,19 @@
-﻿namespace _12_Calculator.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace _12_Calculator.Models
 {
-    public class Class
+    public enum Operation
     {
+        [Display(Name = "Сложение")]
+        Add = 1,
+
+        [Display(Name = "Вычитание")]
+        Subtract = 2,
+
+        [Display(Name = "Умножение")]
+        Multiply = 3,
+
+        [Display(Name = "Деление")]
+        Divide = 4
     }
 }
