@@ -50,21 +50,13 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.EntityFrameworkCore.Design": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
+            "OpenTelemetry": {
               "target": "Package",
-              "version": "[8.0.14, )"
+              "version": "[1.14.0, )"
             },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
+            "SharpAbp.Abp.OpenTelemetry.Exporter.Prometheus.AspNetCore": {
               "target": "Package",
-              "version": "[8.0.14, )"
-            },
-            "Pomelo.EntityFrameworkCore.MySql": {
-              "target": "Package",
-              "version": "[8.0.3, )"
+              "version": "[3.5.5, )"
             }
           },
           "imports": [

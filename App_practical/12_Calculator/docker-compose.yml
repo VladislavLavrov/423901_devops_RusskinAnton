@@ -1,7 +1,71 @@
+version: "3.9"
+
 services:
+  mariadb:
+    container_name: web-mariadb-12
+    hostname: mariadb
+    image: mariadb:10.5
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: password
+      MARIADB_DATABASE: 12_Calculator
+      MARIADB_USER: root
+      MARIADB_PASSWORD: password
+    ports:
+      - "5052:3306"
+    networks:
+      - metrics-net
+
   web:
-    container_name: web-app-12_calculator-jenkins-3
-    hostname: 12_app
+    container_name: 12_calculator-web
+    hostname: app
     build: .
     ports:
-      - "0.0.0.0:5215:5012"
+      - "5012:5012"
+    depends_on:
+      - mariadb
+    networks:
+      - metrics-net
+
+  prometheus:
+    image: prom/prometheus:latest
+    user: root
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus/data:/prometheus:rw
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    ports:
+      - "9102:9090"
+    depends_on:
+      - web
+    networks:
+      - metrics-net
+
+  renderer:
+    image: grafana/grafana-image-renderer:latest
+    ports:
+      - "5062:8081"
+    networks:
+      - metrics-net
+
+  grafana:
+    image: grafana/grafana:latest
+    depends_on:
+      - prometheus
+      - renderer
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana/data:/var/lib/grafana:rw
+    environment:
+      GF_RENDERING_SERVER_URL: http://renderer:5052/render
+      GF_RENDERING_CALLBACK_URL: http://grafana:3000/
+      GF_LOG_FILTERS: rendering:debug
+    networks:
+      - metrics-net
+
+networks:
+  metrics-net:
+    name: metrics-net
