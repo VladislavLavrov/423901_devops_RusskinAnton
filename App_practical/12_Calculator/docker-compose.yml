@@ -56,12 +56,12 @@ services:
       - prometheus
       - renderer
     ports:
-      - "3000:3000"
+      - "3002:3000"
     volumes:
       - ./grafana/data:/var/lib/grafana:rw
     environment:
       GF_RENDERING_SERVER_URL: http://renderer:5052/render
-      GF_RENDERING_CALLBACK_URL: http://grafana:3000/
+      GF_RENDERING_CALLBACK_URL: http://grafana:3002/
       GF_LOG_FILTERS: rendering:debug
     networks:
       - metrics-net
