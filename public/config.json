@@ -1,0 +1,25 @@
+{
+  "TelegramBots": [
+    {
+      "Name": "MainBot",
+      "Token": "7800767422:AAHNeOZ7N8m7CP6sot7djBtAE9yfsseRBxA",
+      "WebStore": {
+        "BaseUrl": "http://91.201.53.81:9010/Public/Api",
+        "SiteId": 5,
+        "MerchantId": 3,
+        "ProfileId": 1,
+        "SecretKey": "7AD6BA1E-F22B-4068-8CAE-A1B426F96607"
+      },
+      "HelpInfo": {
+        "Description": "Добро пожаловать в наш сервис!",
+        "TelegramLink": "https://t.me/support_account",
+        "Website": "https://example.com",
+        "ContactPhone": "+7(800)555-55-55",
+        "OfferText": "Оферта",
+        "OfferUrl": "https://example.com/offer",
+        "VisitRulesText": "Правила посещения",
+        "VisitRulesUrl": "https://example.com/rules"
+      }
+    }
+  ]
+}

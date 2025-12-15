@@ -1,6 +1,6 @@
 import { type DockviewRoute } from 'bars-frontend-shared';
 import SettingsComponent from './components/SettingsComponent';
-import UsersComponent from './components/UsersComponent';
+import BotInfo from './components/BotInfo';
 
 export const ConfigurationRoutes: DockviewRoute[] = [
   {
@@ -12,11 +12,11 @@ export const ConfigurationRoutes: DockviewRoute[] = [
     name: 'Настройки',
   },
   {
-    patch: '/users',
+    patch: '/botinfo',
     component: {
-        customComponent: UsersComponent,
-        typeName: 'users'
+        customComponent: BotInfo,
+        typeName: 'botinfo'
     },
-    name: 'Пользователи',
+    name: 'Информация о боте',
   },
 ];

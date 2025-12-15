@@ -14,8 +14,8 @@ export const MenuSections: MenuSection[] = [
                   href: '/settings'
               },
               {
-                  label: 'Пользователи',
-                  href: '/users'
+                  label: 'Информация о боте',
+                  href: '/botinfo'
               }]
             },
           ]
