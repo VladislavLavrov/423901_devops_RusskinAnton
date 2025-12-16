@@ -1,7 +1,7 @@
 services:
   web:
-    image: ${IMAGE}
-    container_name: devopshw-web
+    build: .
+    container_name: devopshw_russkin
     ports:
       - "5552:80"
     restart: unless-stopped
