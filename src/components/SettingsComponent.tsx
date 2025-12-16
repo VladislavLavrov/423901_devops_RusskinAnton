@@ -173,7 +173,7 @@ const SettingsConstructor: React.FC = () => {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, padding: 20, height: '90vh' }}>
         {/* Настройки */}
         <div style={{ overflowY: 'auto', paddingRight: 12 }}>
-          <h2>🎛️ Конструктор простых кнопок</h2>
+          <h2>🎛️ Конструктор кнопок</h2>
           {buttons.map((btn) => (
             <div key={btn.id} style={{ marginBottom: 16, padding: 12, border: '1px solid #ddd', borderRadius: 12 }}>
               <strong>{btn.text}</strong>
