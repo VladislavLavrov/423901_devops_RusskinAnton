@@ -4,7 +4,7 @@ pipeline {
   environment {
     REGISTRY   = "ghcr.io"
     OWNER      = "VladislavLavrov"
-    IMAGE_NAME = "devopshw"
+    IMAGE_NAME = "423901_devops_russkinanton"
 
     IMAGE_TAG    = "${env.BUILD_NUMBER}"
     FULL_IMAGE   = "${REGISTRY}/${OWNER}/${IMAGE_NAME}:${IMAGE_TAG}"
