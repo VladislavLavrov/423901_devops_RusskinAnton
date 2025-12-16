@@ -1,0 +1,7 @@
+services:
+  web:
+    image: ${IMAGE}
+    container_name: bars-web-app
+    ports:
+      - "5552:80"
+    restart: unless-stopped
